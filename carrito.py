@@ -86,13 +86,7 @@ class Carrito:
 
             self.barrera_principal_fin.wait()
 
-    def tomar_medida(self, x):
-        aux = x % 50
-        if 10 < aux < 40:
-            return 0
-        else:
-            ra = random.randint(3, 4)
-            return np.sin(x/6) * ra
+    
 
     def update_velocidad(self, velocidad):
         if velocidad > 0:

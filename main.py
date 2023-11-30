@@ -4,6 +4,7 @@ from carrito import Carrito
 from iu import IU
 from fourier import Fourier
 from time import sleep
+
 if __name__ == '__main__':
 
     # Colas de comunicación
@@ -40,7 +41,6 @@ if __name__ == '__main__':
     iu.iniciar_iu()
 
     proceso_carrito.join()
-    proceso_iu.join()
     proceso_fourier.join()
 
 
