@@ -177,25 +177,29 @@ class IU:
         self.inicio_iu.wait()
         cont = 0
         
-        
+        val  =  0
+
+        ant = -1
         while True:
-            print(f"SIGOOO{cont}")
-            if(cont == 20):
-                cont = 0
+          
+            if(cont == 200):
+                cont = 0 
                 self.update_label_cpu()
 
             cont = cont + 1
             
             if not self.cola_medidas_iu.empty():
                 medida = self.cola_medidas_iu.get()
-                self.update_grafica2(self.frame_grafica_medidas, self.grafica_medidas, medida, 1)
-
+                if medida[0] != ant:
+                    self.update_grafica2(self.frame_grafica_medidas, self.grafica_medidas, medida, 1)
+                    ant = medida[0]
 
                 if not self.cola_datos_fourier.empty():
                     valores_fourier = self.cola_datos_fourier.get()
                     self.update_grafica(self.frame_grafica_fourier, self.grafica_fourier, valores_fourier, 2)
-        print("chaou")
-        
+            else:
+                val = val + 1
+            
         
     def calcular(self, x):
         aux = x % 50
